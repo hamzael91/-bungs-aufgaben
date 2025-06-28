@@ -1,0 +1,888 @@
+1. Hallo Welt!
+public class HalloWelt {
+    public static void main(String[] args) {
+        System.out.println("Hallo Welt!");
+    }
+}
+**********************
+2. Einfache Benutzereingabe: Stell dich deinem Programm vor!
+import java.util.Scanner;
+public class halloWelt {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Bitte gib deinen Namen ein: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Hallo " + name + "!");
+        
+        scanner.close();
+    }
+}
+**********************
+3. Deine erste eigene Methode
+1-
+import java.util.Scanner;
+
+public class summenRechner {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Bitte gib die erste Zahl ein: ");
+        String input1 = scanner.nextLine();
+
+        System.out.print("Bitte gib die zweite Zahl ein: ");
+        String input2 = scanner.nextLine();
+
+        try {
+            int zahl1 = Integer.parseInt(input1);
+            int zahl2 = Integer.parseInt(input2);
+
+            int summe = zahl1 + zahl2;
+            System.out.println("Die Summe ist: " + summe);
+        } catch (NumberFormatException e) {
+            System.out.println("Bitte gib gültige Zahlen ein.");
+        }
+
+        scanner.close();
+    }
+}
+Notiz: Wenn der Benutzer etwas wie "a" oder "hallo" anstelle einer Zahl eingibt, löst Integer.parseInt() eine NumberFormatException aus. Deshalb verwenden wir einen try-catch-Block, um dies abzufangen und eine freundliche Fehlermeldung anzuzeigen: Output: Bitte gib gültige Zahlen ein.
+**********************
+2- 
+import java.util.Scanner;
+
+public class grundlegendeArithmetik {
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static double divide(int a, int b) {
+        if (b == 0) {
+            System.out.println("Division durch Null ist nicht erlaubt.");
+            return 0;
+        }
+        return (double) a / b;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Gib die erste Zahl ein: ");
+            int num1 = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Gib die zweite Zahl ein: ");
+            int num2 = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Addition: " + add(num1, num2));
+            System.out.println("Subtraktion: " + subtract(num1, num2));
+            System.out.println("Multiplikation: " + multiply(num1, num2));
+            System.out.println("Division: " + divide(num1, num2));
+
+        } catch (NumberFormatException e) {
+            System.out.println("Bitte nur gültige Zahlen eingeben!");
+        }
+
+        scanner.close();
+    }
+}
+**********************
+3-
+import java.util.Scanner;
+
+public class grundlegendeArithmetik {
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static double divide(int a, int b) {
+        if (b == 0) {
+            System.out.println("Division durch Null ist nicht erlaubt");
+            return 0;
+        }
+        return (double) a / b;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Gib die erste Zahl ein: ");
+            int num1 = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Gib die zweite Zahl ein: ");
+            int num2 = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Welche Rechenart möchtest du verwenden? (+, -, *, /): ");
+            String operator = scanner.nextLine();
+
+            switch (operator) {
+                case "+":
+                    System.out.println("Ergebnis: " + add(num1, num2));
+                    break;
+                case "-":
+                    System.out.println("Ergebnis: " + subtract(num1, num2));
+                    break;
+                case "*":
+                    System.out.println("Ergebnis: " + multiply(num1, num2));
+                    break;
+                case "/":
+                    System.out.println("Ergebnis: " + divide(num1, num2));
+                    break;
+                default:
+                    System.out.println("Ungültiger Operator. Bitte +, -, * oder / verwenden.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Ungültige Eingabe! Bitte gib nur Zahlen ein.");
+        }
+
+        scanner.close();
+    }
+}
+
+**********************
+4. Fakultät berechnen (lassen)
+import java.util.Scanner;
+
+public class fakultätRechner {
+
+    public static long berechnenFakultät(int n) {
+        long ergebnis = 1;
+        for (int i = 1; i <= n; i++) {
+            ergebnis *= i;
+        }
+        return ergebnis;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Bitte gib eine Zahl ein: ");
+        int zahl = scanner.nextInt();
+
+        if (zahl < 0) {
+            System.out.println("Fakultät ist nur für nicht-negative Zahlen definiert.");
+        } else {
+            long Fakultät = berechnenFakultät(zahl);
+            System.out.println("Die Fakultät von " + zahl + " ist: " + Fakultät);
+        }
+
+        scanner.close();
+    }
+}
+**********************
+5. Lass dein Programm ein Quadrat zeichnen?
+1- 
+public class sternchenQuadrat{
+    public static void main(String[] args) {
+        int size = 5;
+        for (int i = 0; i < size; i++) { 
+            for (int j = 0; j < size; j++) { 
+                System.out.print("* ");
+            }
+            System.out.println(); 
+        }
+    }
+}
+**********************
+2-
+import java.util.Scanner;
+
+public class rechteckSternen {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Bitte gib die Höhe ein: ");
+        int Höhe = scanner.nextInt();
+
+        System.out.print("Bitte gib die Breite ein: ");
+        int breite = scanner.nextInt();
+
+        for (int i = 0; i < Höhe; i++) {
+            for (int j = 0; j < breite; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+**********************
+6. Lass dein Programm ein Dreieck zeichnen.
+1-
+import java.util.Scanner;
+
+public class Dreieck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Gib die Höhe ein: ");
+        int höhe = scanner.nextInt();
+
+        for (int i = 1; i <= höhe; i++) {
+            for (int j = 1; j <= höhe- i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+**********************
+2-
+import java.util.Scanner;
+
+public class Tannenbaum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Gib die Höhe ein: ");
+        int höhe = scanner.nextInt();
+
+        // Baumspitze 
+        for (int i = 1; i <= höhe ; i++) {
+            for (int j = 1; j <= höhe - i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 1; k <= 2 * i - 1; k++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Stamm 
+        for (int i = 1; i <= höhe / 2; i++) {
+            for (int j = 1; j < höhe ; j++) {
+                System.out.print(" ");
+            }
+            System.out.println("|||");
+        }
+
+        scanner.close();
+    }
+}
+**********************
+7. Pascalsches Dreieck
+import java.util.Scanner;
+
+public class pascalsDreieck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Gib die Anzahl der Zeilen ein: ");
+        int zeilen = scanner.nextInt();
+        for (int i = 0; i < zeilen; i++) {
+            for (int s = 0; s < zeilen - i; s++) {
+                System.out.print(" ");
+            }
+
+            int zahl = 1;
+            for (int j = 0; j <= i; j++) {
+                System.out.print(zahl + " ");
+                zahl = zahl * (i - j) / (j + 1);
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
+
+**********************
+8. Array sortieren
+public class arraySortieren {
+
+    public static void main(String[] args) {
+        int[] originalArray = {45, 52, 2, 1, 0, 98, 445, 4, 42, 65, 3, 12, 11, 20, 42};
+
+        // Original Array
+        System.out.println("Originales Array:");
+        printArray(originalArray);
+
+        // Aufsteigend sortieren
+        int[] aufsteigend = originalArray.clone();
+        bubbleSort(aufsteigend, true);
+        System.out.println("\nAufsteigend sortiert:");
+        printArray(aufsteigend);
+
+        // Absteigend sortieren
+        int[] absteigend = originalArray.clone();
+        bubbleSort(absteigend, false);
+        System.out.println("\nAbsteigend sortiert:");
+        printArray(absteigend);
+    }
+
+    // Bubble Sort mit Richtungsauswahl
+    public static void bubbleSort(int[] array, boolean aufsteigend) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - 1 - i; j++) {
+                if ((aufsteigend && array[j] > array[j + 1]) ||
+                    (!aufsteigend && array[j] < array[j + 1])) {
+                    // Werte tauschen
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    // Ausgeben des Arrays
+    public static void printArray(int[] array) {
+        for (int zahl : array) {
+            System.out.print(zahl + " ");
+        }
+        System.out.println();
+    }
+}
+9. Quadratzahlen berechnen
+public class QuadratZahlen {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 20; i++) {
+            int quadrat = i * i;
+            System.out.println("Die Quadratzahl von " + i + " ist " + quadrat);
+        }
+    }
+}
+
+**********************
+10. Zahlensysteme
+import java.util.Scanner;
+
+public class ZahlenUmrechner {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean weiter = true;
+
+        while (weiter) {
+            System.out.print("Menü: Zeichen, Oktal, heX, Ende? ");
+            String auswahl = scanner.nextLine().toUpperCase();
+
+            switch (auswahl) {
+                case "Z":
+                    System.out.print("Bitte gib ein Zeichen ein: ");
+                    char zeichen = scanner.nextLine().charAt(0);
+                    int ascii = (int) zeichen;
+                    System.out.println("Dezimal: " + ascii);
+                    System.out.println("Binär: " + Integer.toBinaryString(ascii));
+                    break;
+
+                case "O":
+                    System.out.print("Bitte gib eine Oktalzahl ein: ");
+                    String oktal = scanner.nextLine();
+                    try {
+                        int dezOktal = Integer.parseInt(oktal, 8);
+                        System.out.println("Dezimal: " + dezOktal);
+                        System.out.println("Binär: " + Integer.toBinaryString(dezOktal));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Ungültige Oktalzahl!");
+                    }
+                    break;
+
+                case "X":
+                    System.out.print("Bitte gib eine Hexadezimalzahl ein: ");
+                    String hex = scanner.nextLine();
+                    try {
+                        int dezHex = Integer.parseInt(hex, 16);
+                        System.out.println("Dezimal: " + dezHex);
+                        System.out.println("Binär: " + Integer.toBinaryString(dezHex));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Ungültige Hexadezimalzahl!");
+                    }
+                    break;
+
+                case "E":
+                    weiter = false;
+                    System.out.println("Programm beendet.");
+                    break;
+
+                default:
+                    System.out.println("Ungültige Auswahl.");
+            }
+        }
+
+        scanner.close();
+    }
+}
+**********************
+11. Steuerrechner
+import java.util.Scanner;
+
+public class UmsatzsteuerRechner {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Eingabe
+        System.out.print("Gib den Bruttopreis in € ein: ");
+        double brutto = scanner.nextDouble();
+
+        System.out.print("Gib den USt.-Satz in % ein: ");
+        double ustSatz = scanner.nextDouble();
+
+        // Berechnung
+        double steuerBetrag = brutto * ustSatz / (100 + ustSatz);
+        double netto = brutto - steuerBetrag;
+
+        // Ausgabe
+        System.out.printf("Umsatzsteuer: %.2f €\n", steuerBetrag);
+        System.out.printf("Nettopreis: %.2f €\n", netto);
+
+        scanner.close();
+    }
+}
+
+**********************
+12. Sparbuch
+import java.util.Scanner;
+
+public class Zinsrechner {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Schritt 1: Eingaben
+        System.out.print("Gib den Startbetrag in € ein: ");
+        double betrag = scanner.nextDouble();
+
+        System.out.print("Gib den Zinssatz in % ein: ");
+        double zinssatz = scanner.nextDouble();
+
+        // Schritt 2: Faktor berechnen (z.B. 1.03 bei 3%)
+        double faktor = (100.0 + zinssatz) / 100.0;
+
+        // Schritt 3: 10 Jahre berechnen
+        for (int jahr = 1; jahr <= 10; jahr++) {
+            betrag = betrag * faktor;
+            System.out.printf("Jahr %d: %.2f €\n", jahr, betrag);
+        }
+
+        scanner.close();
+    }
+}
+
+**********************
+13. Polymorphismus
+1- Abstrakte Klasse Angestellter
+public abstract class Angestellter {
+    protected String name;
+
+    public Angestellter(String name) {
+        this.name = name;
+    }
+
+    public abstract double getMonthlyPay();
+
+    public double getYearlyPay() {
+        return getMonthlyPay() * 12;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+**********************
+2- 
+Sekretärin
+public class Sekretaerin extends Angestellter {
+    private double grundgehalt;
+
+    public Sekretaerin(String name, double grundgehalt) {
+        super(name);
+        this.grundgehalt = grundgehalt;
+    }
+
+    @Override
+    public double getMonthlyPay() {
+        return grundgehalt;
+    }
+
+    public double getGrundgehalt() {
+        return grundgehalt;
+    }
+}
+Verkäufer
+public class Verkaeufer extends Angestellter {
+    private double grundgehalt;
+    private double provision;
+
+    public Verkaeufer(String name, double grundgehalt, double provision) {
+        super(name);
+        this.grundgehalt = grundgehalt;
+        this.provision = provision;
+    }
+
+    @Override
+    public double getMonthlyPay() {
+        return grundgehalt + provision;
+    }
+
+    public double getGrundgehalt() {
+        return grundgehalt;
+    }
+
+    public double getProvision() {
+        return provision;
+    }
+}
+Manager
+public class Manager extends Angestellter {
+    private double grundgehalt;
+    private boolean istGeschaeftsfuehrung;
+    private boolean fuehrungMehrAls12Mitarbeiter;
+    private boolean mehrAls10JahreZugehoerig;
+
+    public Manager(String name, double grundgehalt,
+                   boolean istGeschaeftsfuehrung,
+                   boolean fuehrungMehrAls12Mitarbeiter,
+                   boolean mehrAls10JahreZugehoerig) {
+        super(name);
+        this.grundgehalt = grundgehalt;
+        this.istGeschaeftsfuehrung = istGeschaeftsfuehrung;
+        this.fuehrungMehrAls12Mitarbeiter = fuehrungMehrAls12Mitarbeiter;
+        this.mehrAls10JahreZugehoerig = mehrAls10JahreZugehoerig;
+    }
+
+    @Override
+    public double getMonthlyPay() {
+        double zulage = 0;
+        if (istGeschaeftsfuehrung) zulage += 1000;
+        if (fuehrungMehrAls12Mitarbeiter) zulage += 500;
+        if (mehrAls10JahreZugehoerig) zulage += 300;
+        return grundgehalt + zulage;
+    }
+
+    public double getGrundgehalt() {
+        return grundgehalt;
+    }
+
+    public boolean isGeschaeftsfuehrung() {
+        return istGeschaeftsfuehrung;
+    }
+
+    public boolean isFuehrungMehrAls12Mitarbeiter() {
+        return fuehrungMehrAls12Mitarbeiter;
+    }
+
+    public boolean isMehrAls10JahreZugehoerig() {
+        return mehrAls10JahreZugehoerig;
+    }
+}
+
+**********************
+3-
+public class GehaltsTest {
+    public static void main(String[] args) {
+        Angestellter[] angestellte = new Angestellter[3];
+
+        angestellte[0] = new Sekretaerin("Anna Schulz", 2500);
+        angestellte[1] = new Verkaeufer("Markus Klein", 2200, 600);
+        angestellte[2] = new Manager("Julia Meier", 3000, true, true, false);
+
+        for (Angestellter a : angestellte) {
+            System.out.println("Name: " + a.getName());
+            System.out.printf("Monatliches Gehalt: %.2f €\n", a.getMonthlyPay());
+            System.out.printf("Jahresgehalt: %.2f €\n", a.getYearlyPay());
+            System.out.println("-------------------------------");
+        }
+    }
+}
+********************************************
+JavaScript/jQuery/AJAX Übungsaufgaben
+********************************************
+1. JavaScript: Summe berechnen
+public static void main(String[] args) {
+    int a = 5;
+    int b = 7;
+    int summe = berechneSumme(a, b);
+    System.out.println("Die Summe ist: " + summe);
+}
+2. JavaScript: Würfelspiele
+function wuerfeln() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+// 1. Wie viele Würfe wurden ausgeführt?
+function aufgabe1() {
+    let wurf = 0;
+    while (wuerfeln() !== 6) {
+        wurf++;
+    }
+    console.log("Aufgabe 1: Anzahl der Würfe bis zur ersten 6:", wurf);
+}
+
+
+// 2. 100 Würfe – wie viele Sechsen?
+function aufgabe2() {
+    let sechser = 0;
+    for (let i = 0; i < 100; i++) {
+        if (wuerfeln() === 6) {
+            sechser++;
+        }
+    }
+    console.log("Aufgabe 2: Anzahl der Sechsen in 100 Würfen:", sechser);
+}
+
+// 3. Zwei Würfel – würfeln bis beide gleich sind
+function aufgabe3() {
+    let versuche = 0;
+    let w1, w2;
+    do {
+        w1 = wuerfeln();
+        w2 = wuerfeln();
+        versuche++;
+    } while (w1 !== w2);
+    console.log("Aufgabe 3: Gleiches Ergebnis nach", versuche, "Versuchen –", w1);
+}
+
+// 4. Würfeln bis einer eine Sechs zeigt
+function aufgabe4() {
+    let versuche = 0;
+    let w1, w2;
+    do {
+        w1 = wuerfeln();
+        w2 = wuerfeln();
+        versuche++;
+    } while (w1 !== 6 && w2 !== 6);
+    console.log("Aufgabe 4: Einer zeigte eine 6 nach", versuche, "Versuchen");
+}
+
+// 5. Würfeln bis einer 6 und der andere 1 zeigt
+function aufgabe5() {
+    let versuche = 0;
+    let w1, w2;
+    do {
+        w1 = wuerfeln();
+        w2 = wuerfeln();
+        versuche++;
+    } while (!((w1 === 6 && w2 === 1) || (w1 === 1 && w2 === 6)));
+    console.log("Aufgabe 5: Einer hatte 6, einer 1 – nach", versuche, "Versuchen");
+}
+
+// 6. Menü zum Auswählen
+function startWuerfelspiel() {
+    let auswahl = prompt("Wähle eine Aufgabe (1–5) oder 'exit':\n1. Wurfzähler\n2. Sechser zählen\n3. Gleiche Augen\n4. Einer 6\n5. Einer 6, anderer 1");
+
+    switch (auswahl) {
+        case "1": aufgabe1(); break;
+        case "2": aufgabe2(); break;
+        case "3": aufgabe3(); break;
+        case "4": aufgabe4(); break;
+        case "5": aufgabe5(); break;
+        case "exit": return;
+        default: console.log("Ungültige Auswahl.");
+    }
+
+    startWuerfelspiel(); // Rekursion für wiederholte Auswahl
+}
+
+startWuerfelspiel();
+3. JavaScript/jQuery: ToDo-Liste
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo-Liste</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        li.erledigt { text-decoration: line-through; color: gray; }
+        button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>📝 Meine ToDo-Liste</h1>
+    <input type="text" id="todo-eingabe" placeholder="Neue Aufgabe...">
+    <button id="hinzufuegen">Hinzufügen</button>
+
+    <ul id="todo-liste"></ul>
+
+    <script>
+        $(document).ready(function () {
+
+            // Lade gespeicherte Todos
+            if (localStorage.getItem("todos")) {
+                $('#todo-liste').html(localStorage.getItem("todos"));
+            }
+
+            // Speichern der Liste
+            function speichereTodos() {
+                localStorage.setItem("todos", $('#todo-liste').html());
+            }
+
+            // Hinzufügen eines neuen Eintrags
+            $('#hinzufuegen').on('click', function () {
+                const text = $('#todo-eingabe').val().trim();
+                if (text !== "") {
+                    const li = $('<li></li>').text(text);
+                    const checkbox = $('<input type="checkbox">');
+                    const loeschen = $('<button>Löschen</button>');
+
+                    checkbox.on('change', function () {
+                        li.toggleClass('erledigt');
+                        speichereTodos();
+                    });
+
+                    loeschen.on('click', function () {
+                        li.remove();
+                        speichereTodos();
+                    });
+
+                    li.prepend(checkbox);
+                    li.append(loeschen);
+                    $('#todo-liste').append(li);
+                    $('#todo-eingabe').val('');
+                    speichereTodos();
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+4. JavaScript/jQuery: JSON anzeigen
+ Datei: greeting.json
+{
+  "firstname": "Hans",
+  "surname": "Wurst",
+  "salutation": "Herr"
+}
+Datei: greeting.html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Begrüßung</title>
+  <style>
+    .salutation { color: darkblue; }
+    .firstname { color: green; }
+    .surname { color: darkred; }
+  </style>
+</head>
+<body>
+  <h2 id="greeting">Lade Begrüßung...</h2>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      fetch("greeting.json")
+        .then(response => response.json())
+        .then(data => {
+          const greeting = `Hallo <span class="salutation">${data.salutation}</span> <span class="firstname">${data.firstname}</span> <span class="surname">${data.surname}</span>`;
+          document.getElementById("greeting").innerHTML = greeting;
+        })
+        .catch(err => {
+          document.getElementById("greeting").textContent = "Fehler beim Laden der Begrüßung.";
+          console.error("Fehler beim Laden:", err);
+        });
+    });
+  </script>
+</body>
+</html>
+5. JavaScript/jQuery: AJAX
+todo.html
+<div>
+  <input type="text" id="todo-eingabe" placeholder="Neue Aufgabe...">
+  <button id="hinzufuegen">Hinzufügen</button>
+  <ul id="todo-liste"></ul>
+</div>
+script.js
+document.addEventListener("DOMContentLoaded", function () {
+  // Load todo.html on page load
+  fetch("todo.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("todo-container").innerHTML = html;
+      initTodoListeners();
+    });
+
+  // Load ajax.html into index.html
+  const ajaxButton = document.getElementById("load-ajax");
+  ajaxButton.addEventListener("click", function () {
+    fetch("ajax.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("ajax-container").innerHTML = html;
+        bindReloadAjax("ajax-container");
+      });
+  });
+});
+
+// Load ajax.html again inside its own inner container
+function bindReloadAjax(containerId) {
+  const reloadBtn = document.querySelector(`#${containerId} #reload-ajax`);
+  const innerContainer = document.querySelector(`#${containerId} #inner-container`);
+  if (reloadBtn && innerContainer) {
+    reloadBtn.addEventListener("click", function () {
+      fetch("ajax.html")
+        .then(res => res.text())
+        .then(html => {
+          innerContainer.innerHTML = html;
+          bindReloadAjax("inner-container");
+        });
+    });
+  }
+}
+
+// Add ToDo logic
+function initTodoListeners() {
+  const addBtn = document.getElementById("hinzufuegen");
+  const todoList = document.getElementById("todo-liste");
+  const input = document.getElementById("todo-eingabe");
+
+  if (!addBtn || !todoList || !input) return;
+
+  addBtn.addEventListener("click", () => {
+    const value = input.value.trim();
+    if (value === "") return;
+
+    const li = document.createElement("li");
+    li.textContent = value;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", () => {
+      li.style.textDecoration = checkbox.checked ? "line-through" : "none";
+    });
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Löschen";
+    removeBtn.addEventListener("click", () => {
+      todoList.removeChild(li);
+    });
+
+    li.prepend(checkbox);
+    li.appendChild(removeBtn);
+    todoList.appendChild(li);
+    input.value = "";
+  });
+}
+**********************
